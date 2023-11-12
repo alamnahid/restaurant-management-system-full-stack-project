@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 
 
-const RoomCard = ({room}) => {
-    return (
-        <div className='col-span-1 cursor-pointer group'>
+const RoomCard = ({ room }) => {
+  return (
+    <Link to={`/room/${room?._id}`}>
+    <div className='col-span-1 cursor-pointer group'>
       <div className='flex flex-col gap-2 w-full'>
         <div
           className='
@@ -43,7 +45,8 @@ const RoomCard = ({room}) => {
         </div>
       </div>
     </div>
-    );
+    </Link>
+  );
 };
 
 export default RoomCard;
