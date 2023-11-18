@@ -12,6 +12,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import app from '../Firebase/firebase.confiq'
+import { clearCookiie } from '../api/auth'
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
@@ -41,8 +42,10 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email)
   }
 
-  const logOut = () => {
+  const logOut = async () => {
     setLoading(true)
+    await clearCookiie()
+
     return signOut(auth)
   }
 

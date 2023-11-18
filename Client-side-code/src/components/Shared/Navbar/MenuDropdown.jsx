@@ -7,7 +7,7 @@ import useAuth from '../../../hooks/useAuth'
 
 const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { user } = useAuth()
+  const { user,logOut } = useAuth()
 
   return (
     <div className='relative'>
@@ -47,6 +47,22 @@ const MenuDropdown = () => {
               Home
             </Link>
 
+           {user ? <>
+            <Link
+              to='/dashboard'
+              className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+            >
+              Dashboard
+            </Link>
+            <Link onClick={logOut}
+              to='/signup'
+              className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+            >
+              Log Out
+            </Link>
+           </> 
+           :
+           <>
             <Link
               to='/login'
               className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
@@ -59,6 +75,7 @@ const MenuDropdown = () => {
             >
               Sign Up
             </Link>
+            </>}
           </div>
         </div>
       )}
