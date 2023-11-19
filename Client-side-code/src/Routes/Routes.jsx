@@ -6,6 +6,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import RoomDetails from "../Pages/Room Details/RoomDetails";
 import PrivateRoutes from "./PrivateRoutes";
+import { getRoom } from "../api/room";
 
 const router = createBrowserRouter([
     {
@@ -15,11 +16,12 @@ const router = createBrowserRouter([
       children: [
         {
             path: '/',
-            element: <Home></Home>
+            element: <Home></Home>,
         },
         {
           path: '/room/:id',
-          element: <PrivateRoutes><RoomDetails></RoomDetails></PrivateRoutes>
+          element: <PrivateRoutes><RoomDetails></RoomDetails></PrivateRoutes>,
+          loader: ({params})=>getRoom(params.id)
         }
       ]
     },

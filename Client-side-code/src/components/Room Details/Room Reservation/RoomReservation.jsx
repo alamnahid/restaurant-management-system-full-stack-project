@@ -12,12 +12,12 @@ const RoomReservation = ({room}) => {
 
     // console.log(totalDays)
 
-    // const [value, setValue] = useState({
-    //     startdate: new Date(room?.from),
-    //     enddate: new Date(room?.to),
-    //     key: 'selection',
+    const [value, setValue] = useState({
+        startdate: new Date(room?.from),
+        enddate: new Date(room?.to),
+        key: 'selection',
 
-    // })
+    })
     return (
         <div className="rounded-xl border-2 bg-white overflow-hidden">
             <div className="flex items-center gap-1 p-4">
@@ -27,7 +27,7 @@ const RoomReservation = ({room}) => {
             </div><hr />
 
             <div className="flex justify-center items-center">
-            <Calender></Calender>
+            <Calender value={value}></Calender>
             </div>
             <hr />
             <div className="p-4">
